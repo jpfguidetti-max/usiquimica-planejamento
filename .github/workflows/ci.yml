@@ -1,0 +1,26 @@
+name: Testes
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - run: pytest -q
+      - name: Modelos de cadastro batem com os esquemas
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from planejamento.cadastros.schemas import TODOS
+          for nome, esq in TODOS.items():
+              cab = Path(f"modelos_cadastro/{nome}.csv").read_text(encoding="utf-8").splitlines()[0]
+              assert cab.split(";") == esq.nomes, f"{nome}: modelo desatualizado"
+          print("OK")
+          PY

@@ -1,0 +1,39 @@
+# Parâmetros de negócio da Usiquímica.
+# Regras ficam aqui, não no código: alterar um valor não exige programar.
+
+mps:
+  horizonte_semanas: 13
+  semanas_congeladas: 2          # confirmado para E8 e IQT
+  bulk:
+    volume_litros: 23700
+    produzir_bulk_inteiro: true  # carregado o bulk, produz tudo, mesmo acima da cobertura-alvo
+  cobertura_alvo_dias_padrao: 30
+
+industrializadores:
+  E8:
+    conversao_pa_intermediario: "1:1"
+    sequencia_cores_obrigatoria:   # restrição rígida
+      - [Amarelo dourado, Vermelho]
+  IQT:
+    conversao_pa_intermediario: tabela_fator_conversao
+
+sequenciamento:
+  linhas_otimizar_cor: [R18, L04, R08]
+  objetivo: minimizar_setups_envase
+
+tancagem:
+  antecipar_sequenciamento_com_sobra_importada: true
+  intermediarios_vermelho_decisao_humana: true
+
+demanda:
+  horizonte_meses: 18
+  nivel_previsao:
+    clientes_classe_A: sku_x_cliente
+    demais_clientes: sku_x_canal
+
+sop:
+  dono_processo: Head de Supply Chain
+  reuniao_executiva: 5 dias úteis antes do fechamento do mês
+
+carga_csv:
+  corrigir_separador_decimal: true

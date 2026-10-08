@@ -1,0 +1,7 @@
+# Dados reais da Usiquímica NUNCA entram neste repositório (o site do Pages é público).
+dados/
+*.xlsx
+__pycache__/
+.pytest_cache/
+*.pyc
+.venv/
