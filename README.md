@@ -4,15 +4,17 @@ Ciclo completo de planejamento em uma só base: previsão de demanda, consenso S
 MPS, MRP e acompanhamento da produção nos industrializadores E8 e IQT.
 Referências funcionais: Plannera (demanda e consenso) e Pyplan (MPS, MRP e execução).
 
-## Status: Fase 0 — Fundação
+## Status: Fase 1 — Planejamento de demanda
 
-| Fase | Conteúdo | Status |
-| --- | --- | --- |
-| 0 | Cadastros mestres, cargas CSV com validação, testes e CI | **Em andamento** |
-| 1 | MPS e MRP (migra as regras da ferramenta atual) | A fazer |
-| 2 | Execução (S&OE): apontamentos e aderência | A fazer |
-| 3 | Planejamento de demanda estatístico | A fazer |
-| 4 | Consenso S&OP, Supabase Pro e integração com o ERP | A fazer |
+A entrega segue o fluxo do planejamento: demanda → MPS → RCCP → MRP (decidido em 14/10/2026).
+
+| Fase | Conteúdo | Portão para avançar | Status |
+| --- | --- | --- | --- |
+| 0 | Cargas CSV com validação, testes e CI | Vendas, produtos e clientes carregados sem erro | Concluída |
+| 1 | Planejamento de demanda estatístico e painel de acurácia | Backtest de 12 meses com erro menor que o método de referência | **Próxima** |
+| 2 | MPS, RCCP e MRP (migra as regras da ferramenta atual) | Plano igual ao da planilha por 4 ciclos semanais | A fazer |
+| 3 | Execução (S&OE): apontamentos e aderência | Apontamento diário dos dois industrializadores | A fazer |
+| 4 | Consenso S&OP, Supabase Pro e integração com o ERP | — | A fazer |
 
 ## Arquitetura (decidida em 08/10/2026)
 
